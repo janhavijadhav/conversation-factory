@@ -1,0 +1,43 @@
+{
+  "run": "baseline",
+  "steering": false,
+  "requested": 10,
+  "generated": 10,
+  "passed": 6,
+  "pass_rate": 0.6,
+  "first_try_pass_rate": 0.6,
+  "rewrites": 1,
+  "regenerations": 7,
+  "structural_failures": 2,
+  "mean_scores": {
+    "correctness": 4.33,
+    "naturalness": 4.44,
+    "groundedness": 4.89,
+    "completeness": 3.78
+  },
+  "grounding_fixes_per_conv": 0.0,
+  "validation_errors_per_conv": 0.0,
+  "llm_calls": {
+    "assistant": 103,
+    "judge": 16,
+    "simulator": 83
+  },
+  "minutes": 15.3,
+  "stopped_early": null,
+  "errors": [],
+  "corpus": {
+    "conversations": 6,
+    "mean_tool_calls": 2.83,
+    "multi_step_ratio": 1.0,
+    "long_chain_ratio": 0.5,
+    "category_share": {
+      "banking": 0.167,
+      "calendar": 0.667,
+      "ecommerce": 0.0,
+      "travel": 0.167
+    },
+    "category_balance": 0.0,
+    "tool_coverage": 0.346,
+    "repeated_first_names": {}
+  }
+}

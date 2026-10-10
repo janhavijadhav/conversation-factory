@@ -1,0 +1,89 @@
+[
+  {
+    "name": "search_events",
+    "category": "calendar",
+    "description": "Search calendar events by keyword",
+    "operation": "search",
+    "parameters": [
+      {"name": "query", "type": "string", "description": "Keyword to search for"},
+      {"name": "date", "type": "string", "description": "Date to search, YYYY-MM-DD", "required": false}
+    ],
+    "returns": [
+      {"name": "event_id", "type": "string"},
+      {"name": "title", "type": "string"},
+      {"name": "start_time", "type": "string"}
+    ]
+  },
+  {
+    "name": "get_event",
+    "category": "calendar",
+    "description": "Get full details of one event",
+    "operation": "read",
+    "parameters": [
+      {"name": "event_id", "type": "string", "description": "ID of the event"}
+    ],
+    "returns": [
+      {"name": "event_id", "type": "string"},
+      {"name": "title", "type": "string"},
+      {"name": "start_time", "type": "string"},
+      {"name": "email", "type": "string"}
+    ]
+  },
+  {
+    "name": "create_event",
+    "category": "calendar",
+    "description": "Create a new calendar event",
+    "operation": "create",
+    "parameters": [
+      {"name": "title", "type": "string", "description": "Event title"},
+      {"name": "start_time", "type": "string", "description": "Start time, ISO format"},
+      {"name": "duration_minutes", "type": "integer", "description": "Length in minutes"},
+      {"name": "email", "type": "string", "description": "Attendee email to invite", "required": false}
+    ],
+    "returns": [
+      {"name": "event_id", "type": "string"},
+      {"name": "title", "type": "string"}
+    ]
+  },
+  {
+    "name": "update_event",
+    "category": "calendar",
+    "description": "Move an event to a new time",
+    "operation": "update",
+    "parameters": [
+      {"name": "event_id", "type": "string", "description": "ID of the event"},
+      {"name": "start_time", "type": "string", "description": "New start time, ISO format"}
+    ],
+    "returns": [
+      {"name": "event_id", "type": "string"},
+      {"name": "start_time", "type": "string"}
+    ]
+  },
+  {
+    "name": "delete_event",
+    "category": "calendar",
+    "description": "Delete a calendar event",
+    "operation": "delete",
+    "parameters": [
+      {"name": "event_id", "type": "string", "description": "ID of the event to delete"}
+    ],
+    "returns": [
+      {"name": "event_id", "type": "string"},
+      {"name": "deleted", "type": "boolean"}
+    ]
+  },
+  {
+    "name": "send_email",
+    "category": "calendar",
+    "description": "Send an email to someone",
+    "operation": "create",
+    "parameters": [
+      {"name": "email", "type": "string", "description": "Recipient email"},
+      {"name": "subject", "type": "string", "description": "Email subject"},
+      {"name": "body", "type": "string", "description": "Email body"}
+    ],
+    "returns": [
+      {"name": "message_id", "type": "string"}
+    ]
+  }
+]

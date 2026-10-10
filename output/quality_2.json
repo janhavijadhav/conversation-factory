@@ -1,0 +1,77 @@
+{
+  "id": "conv_eff00fea",
+  "category": "calendar",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Hey, I need to schedule a kickoff meeting with Alex Chen on Dec 12, 2026 at 2:00\u202fPM for 90 minutes, and then reschedule it to Dec 14, 2026 at 11:00\u202fAM because my flight got delayed.",
+      "tool_calls": []
+    },
+    {
+      "role": "assistant",
+      "tool_calls": [
+        {
+          "id": "fc_6baf18fc-4bf4-48b1-8860-c4a1a0730240",
+          "name": "create_event",
+          "arguments": {
+            "duration_minutes": 90,
+            "start_time": "2026-12-12T14:00:00",
+            "title": "Kickoff meeting with Alex Chen"
+          }
+        }
+      ]
+    },
+    {
+      "role": "tool",
+      "content": "{\"event_id\": \"event_f4bea9\", \"title\": \"Kickoff meeting with Alex Chen\"}",
+      "tool_calls": [],
+      "tool_call_id": "fc_6baf18fc-4bf4-48b1-8860-c4a1a0730240",
+      "name": "create_event"
+    },
+    {
+      "role": "assistant",
+      "tool_calls": [
+        {
+          "id": "fc_e9fb9764-28c5-4b4e-bb21-6b9d35800a9d",
+          "name": "update_event",
+          "arguments": {
+            "event_id": "event_f4bea9",
+            "start_time": "2026-12-14T11:00:00"
+          }
+        }
+      ]
+    },
+    {
+      "role": "tool",
+      "content": "{\"event_id\": \"event_f4bea9\", \"start_time\": \"2026-12-14T11:00:00\"}",
+      "tool_calls": [],
+      "tool_call_id": "fc_e9fb9764-28c5-4b4e-bb21-6b9d35800a9d",
+      "name": "update_event"
+    },
+    {
+      "role": "assistant",
+      "content": "Your kickoff meeting with Alex\u202fChen has been scheduled for **December\u202f14,\u202f2026 at\u202f11:00\u202fAM** and will run for **90\u202fminutes**. The original December\u202f12 slot has been replaced. Let me know if you need anything else!",
+      "tool_calls": []
+    }
+  ],
+  "num_tool_calls": 2,
+  "num_grounding_fixes": 0,
+  "num_validation_errors": 0,
+  "stop_reason": "user_satisfied",
+  "scores": {
+    "correctness": 5.0,
+    "naturalness": 5.0,
+    "groundedness": 5.0,
+    "completeness": 5.0,
+    "feedback": "The assistant correctly executed the user's request by creating the event and then updating it to the new time, providing a clear and accurate summary without exposing internal IDs."
+  },
+  "passed": true,
+  "quality_history": [
+    {
+      "attempt": 0,
+      "stage": "judge",
+      "mean": 5.0,
+      "issues": []
+    }
+  ]
+}

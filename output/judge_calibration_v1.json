@@ -1,0 +1,378 @@
+{
+  "judge": "qwen/qwen3.8-27b",
+  "summary": {
+    "control": {
+      "cases": 3,
+      "correct": 3,
+      "rate": 1.0,
+      "avg_scores": {
+        "correctness": 5.0,
+        "naturalness": 5.0,
+        "groundedness": 5.0,
+        "completeness": 5.0
+      }
+    },
+    "wrong_number": {
+      "cases": 3,
+      "correct": 3,
+      "rate": 1.0,
+      "avg_scores": {
+        "correctness": 5.0,
+        "naturalness": 5.0,
+        "groundedness": 1.33,
+        "completeness": 5.0
+      }
+    },
+    "false_action": {
+      "cases": 3,
+      "correct": 3,
+      "rate": 1.0,
+      "avg_scores": {
+        "correctness": 5.0,
+        "naturalness": 5.0,
+        "groundedness": 1.0,
+        "completeness": 5.0
+      }
+    },
+    "invented_detail": {
+      "cases": 3,
+      "correct": 3,
+      "rate": 1.0,
+      "avg_scores": {
+        "correctness": 5.0,
+        "naturalness": 4.33,
+        "groundedness": 1.0,
+        "completeness": 5.0
+      }
+    },
+    "wrong_id_argument": {
+      "cases": 3,
+      "correct": 3,
+      "rate": 1.0,
+      "avg_scores": {
+        "correctness": 1.67,
+        "naturalness": 5.0,
+        "groundedness": 3.67,
+        "completeness": 3.67
+      }
+    },
+    "missing_step": {
+      "cases": 3,
+      "correct": 3,
+      "rate": 1.0,
+      "avg_scores": {
+        "correctness": 1.33,
+        "naturalness": 4.33,
+        "groundedness": 1.33,
+        "completeness": 1.33
+      }
+    },
+    "unhelpful_ending": {
+      "cases": 3,
+      "correct": 1,
+      "rate": 0.33,
+      "avg_scores": {
+        "correctness": 5.0,
+        "naturalness": 3.0,
+        "groundedness": 5.0,
+        "completeness": 5.0
+      }
+    }
+  },
+  "rows": [
+    {
+      "base": "sample_3.json#0",
+      "kind": "control",
+      "description": "unchanged original",
+      "passed": true,
+      "correct_verdict": true,
+      "scores": {
+        "correctness": 5.0,
+        "naturalness": 5.0,
+        "groundedness": 5.0,
+        "completeness": 5.0
+      },
+      "feedback": "The assistant correctly identified the necessary parameters, executed the tools in the right order, and accurately reported the results without hallucinating details or exposing internal IDs."
+    },
+    {
+      "base": "sample_3.json#0",
+      "kind": "wrong_number",
+      "description": "changed 12 to 19",
+      "passed": false,
+      "correct_verdict": true,
+      "scores": {
+        "correctness": 5.0,
+        "naturalness": 5.0,
+        "groundedness": 2.0,
+        "completeness": 5.0
+      },
+      "feedback": "The tool calls were correct and the flow was natural, but the final summary contains a significant factual error regarding the check-in date (Feb 19 instead of Feb 12)."
+    },
+    {
+      "base": "sample_3.json#0",
+      "kind": "false_action",
+      "description": "claims send_email that never ran",
+      "passed": false,
+      "correct_verdict": true,
+      "scores": {
+        "correctness": 5.0,
+        "naturalness": 5.0,
+        "groundedness": 1.0,
+        "completeness": 5.0
+      },
+      "feedback": "The assistant hallucinated an action (sending an email) that was not performed by any tool call. This must be removed to ensure groundedness."
+    },
+    {
+      "base": "sample_3.json#0",
+      "kind": "invented_detail",
+      "description": "invented a 15% discount",
+      "passed": false,
+      "correct_verdict": true,
+      "scores": {
+        "correctness": 5.0,
+        "naturalness": 5.0,
+        "groundedness": 1.0,
+        "completeness": 5.0
+      },
+      "feedback": "The assistant correctly executed all tool calls and arguments, but the final response hallucinated a discount that was not present in the tool results. Removing the ungrounded claim about the discount fixes the issue."
+    },
+    {
+      "base": "sample_3.json#0",
+      "kind": "wrong_id_argument",
+      "description": "book_hotel.hotel_id set to hotel_ffffff",
+      "passed": false,
+      "correct_verdict": true,
+      "scores": {
+        "correctness": 2.0,
+        "naturalness": 5.0,
+        "groundedness": 5.0,
+        "completeness": 5.0
+      },
+      "feedback": "The assistant hallucinated the hotel ID in the booking call, using a non-existent ID instead of the one provided in the search results. This is a critical tool-use error that cannot be fixed by rewriting the text response."
+    },
+    {
+      "base": "sample_3.json#0",
+      "kind": "missing_step",
+      "description": "removed create_event but kept the reply",
+      "passed": false,
+      "correct_verdict": true,
+      "scores": {
+        "correctness": 2.0,
+        "naturalness": 4.0,
+        "groundedness": 2.0,
+        "completeness": 2.0
+      },
+      "feedback": "The assistant failed to call the `create_event` tool despite the user's explicit request to add the reservation to the calendar, and then falsely claimed the action was completed. This is a critical failure in tool usage and groundedness."
+    },
+    {
+      "base": "sample_3.json#0",
+      "kind": "unhelpful_ending",
+      "description": "final reply replaced with 'Okay, noted.'",
+      "passed": true,
+      "correct_verdict": false,
+      "scores": {
+        "correctness": 5.0,
+        "naturalness": 4.0,
+        "groundedness": 5.0,
+        "completeness": 5.0
+      },
+      "feedback": "The tool usage and logic were perfect, but the final assistant message was too terse and failed to provide a proper confirmation summary of the actions taken."
+    },
+    {
+      "base": "sample_4.json#0",
+      "kind": "control",
+      "description": "unchanged original",
+      "passed": true,
+      "correct_verdict": true,
+      "scores": {
+        "correctness": 5.0,
+        "naturalness": 5.0,
+        "groundedness": 5.0,
+        "completeness": 5.0
+      },
+      "feedback": "The assistant correctly identified the specific event from the search results and deleted it without unnecessary confirmation steps, as the user's intent was explicit. The final response is concise, polite, and accurately reflects the tool's output."
+    },
+    {
+      "base": "sample_4.json#0",
+      "kind": "wrong_number",
+      "description": "changed 15 to 22",
+      "passed": false,
+      "correct_verdict": true,
+      "scores": {
+        "correctness": 5.0,
+        "naturalness": 5.0,
+        "groundedness": 1.0,
+        "completeness": 5.0
+      },
+      "feedback": "The tool usage was correct, but the final response contains a factual error regarding the date of the cancelled event."
+    },
+    {
+      "base": "sample_4.json#0",
+      "kind": "false_action",
+      "description": "claims send_email that never ran",
+      "passed": false,
+      "correct_verdict": true,
+      "scores": {
+        "correctness": 5.0,
+        "naturalness": 5.0,
+        "groundedness": 1.0,
+        "completeness": 5.0
+      },
+      "feedback": "The assistant correctly identified and deleted the event, but falsely claimed to have sent an email confirmation without actually calling the send_email tool. This claim must be removed to ensure groundedness."
+    },
+    {
+      "base": "sample_4.json#0",
+      "kind": "invented_detail",
+      "description": "invented a 15% discount",
+      "passed": false,
+      "correct_verdict": true,
+      "scores": {
+        "correctness": 5.0,
+        "naturalness": 4.0,
+        "groundedness": 1.0,
+        "completeness": 5.0
+      },
+      "feedback": "The assistant correctly identified and deleted the event, but hallucinated a discount in the final response. This must be removed to ensure groundedness."
+    },
+    {
+      "base": "sample_4.json#0",
+      "kind": "wrong_id_argument",
+      "description": "delete_event.event_id set to event_ffffff",
+      "passed": false,
+      "correct_verdict": true,
+      "scores": {
+        "correctness": 1.0,
+        "naturalness": 5.0,
+        "groundedness": 1.0,
+        "completeness": 1.0
+      },
+      "feedback": "The assistant used a hallucinated event ID in the delete_event call, which does not match the search results. This is a critical tool-use error that cannot be fixed by rewriting the text responses alone."
+    },
+    {
+      "base": "sample_4.json#0",
+      "kind": "missing_step",
+      "description": "removed delete_event but kept the reply",
+      "passed": false,
+      "correct_verdict": true,
+      "scores": {
+        "correctness": 1.0,
+        "naturalness": 4.0,
+        "groundedness": 1.0,
+        "completeness": 1.0
+      },
+      "feedback": "The assistant failed to call the `delete_event` tool to cancel the appointment, yet falsely claimed the action was completed. This is a critical failure in both correctness and groundedness."
+    },
+    {
+      "base": "sample_4.json#0",
+      "kind": "unhelpful_ending",
+      "description": "final reply replaced with 'Okay, noted.'",
+      "passed": false,
+      "correct_verdict": true,
+      "scores": {
+        "correctness": 5.0,
+        "naturalness": 2.0,
+        "groundedness": 5.0,
+        "completeness": 5.0
+      },
+      "feedback": "The tool usage was correct and efficient, but the final assistant response was too brief and failed to clearly confirm the cancellation to the user."
+    },
+    {
+      "base": "quality_2.json#0",
+      "kind": "control",
+      "description": "unchanged original",
+      "passed": true,
+      "correct_verdict": true,
+      "scores": {
+        "correctness": 5.0,
+        "naturalness": 5.0,
+        "groundedness": 5.0,
+        "completeness": 5.0
+      },
+      "feedback": "The assistant correctly interpreted the user's request to create and then reschedule the event, using the appropriate tools with accurate arguments. The final response is clear, concise, and accurately reflects the final state of the calendar."
+    },
+    {
+      "base": "quality_2.json#0",
+      "kind": "wrong_number",
+      "description": "changed 14 to 21",
+      "passed": false,
+      "correct_verdict": true,
+      "scores": {
+        "correctness": 5.0,
+        "naturalness": 5.0,
+        "groundedness": 1.0,
+        "completeness": 5.0
+      },
+      "feedback": "The tool calls were executed correctly, but the final response contains a significant factual error regarding the date (Dec 21 instead of Dec 14)."
+    },
+    {
+      "base": "quality_2.json#0",
+      "kind": "false_action",
+      "description": "claims send_email that never ran",
+      "passed": false,
+      "correct_verdict": true,
+      "scores": {
+        "correctness": 5.0,
+        "naturalness": 5.0,
+        "groundedness": 1.0,
+        "completeness": 5.0
+      },
+      "feedback": "The tool calls were executed correctly and in the right order, but the final response falsely claims an email was sent when no such tool call occurred. This must be removed to ensure groundedness."
+    },
+    {
+      "base": "quality_2.json#0",
+      "kind": "invented_detail",
+      "description": "invented a 15% discount",
+      "passed": false,
+      "correct_verdict": true,
+      "scores": {
+        "correctness": 5.0,
+        "naturalness": 4.0,
+        "groundedness": 1.0,
+        "completeness": 5.0
+      },
+      "feedback": "The tool calls were executed correctly and in the right order, but the final response contains a completely fabricated claim about a discount, which severely damages trust and groundedness."
+    },
+    {
+      "base": "quality_2.json#0",
+      "kind": "wrong_id_argument",
+      "description": "update_event.event_id set to event_ffffff",
+      "passed": false,
+      "correct_verdict": true,
+      "scores": {
+        "correctness": 2.0,
+        "naturalness": 5.0,
+        "groundedness": 5.0,
+        "completeness": 5.0
+      },
+      "feedback": "The assistant failed to use the correct event_id returned by the create_event tool, using a hallucinated ID instead. This is a critical tool-use error that cannot be fixed by rewriting the text response."
+    },
+    {
+      "base": "quality_2.json#0",
+      "kind": "missing_step",
+      "description": "removed update_event but kept the reply",
+      "passed": false,
+      "correct_verdict": true,
+      "scores": {
+        "correctness": 1.0,
+        "naturalness": 5.0,
+        "groundedness": 1.0,
+        "completeness": 1.0
+      },
+      "feedback": "The assistant hallucinated the completion of the rescheduling step; it must actually call `update_event` to move the meeting to the new time before confirming it to the user."
+    },
+    {
+      "base": "quality_2.json#0",
+      "kind": "unhelpful_ending",
+      "description": "final reply replaced with 'Okay, noted.'",
+      "passed": true,
+      "correct_verdict": false,
+      "scores": {
+        "correctness": 5.0,
+        "naturalness": 3.0,
+        "groundedness": 5.0,
+        "completeness": 5.0
+      },
+      "feedback": "The tool calls were executed correctly and in the right order. However, the final assistant message is too brief and should explicitly confirm the new meeting time to be more helpful and natural."
+    }
+  ]
+}

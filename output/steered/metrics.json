@@ -1,0 +1,43 @@
+{
+  "run": "steered",
+  "steering": true,
+  "requested": 10,
+  "generated": 0,
+  "passed": 0,
+  "pass_rate": 0.0,
+  "first_try_pass_rate": 0.0,
+  "rewrites": 0,
+  "regenerations": 0,
+  "structural_failures": 0,
+  "mean_scores": {
+    "correctness": 0.0,
+    "naturalness": 0.0,
+    "groundedness": 0.0,
+    "completeness": 0.0
+  },
+  "grounding_fixes_per_conv": 0.0,
+  "validation_errors_per_conv": 0.0,
+  "llm_calls": {
+    "assistant": 8,
+    "judge": 0,
+    "simulator": 12
+  },
+  "minutes": 1.6,
+  "stopped_early": "Daily quota used up for openai/gpt-oss-120b (tokens per day). Switch MODEL_NAME/provider in .env or wait for the reset.",
+  "errors": [],
+  "corpus": {
+    "conversations": 0,
+    "mean_tool_calls": 0.0,
+    "multi_step_ratio": 0.0,
+    "long_chain_ratio": 0.0,
+    "category_share": {
+      "banking": 0.0,
+      "calendar": 0.0,
+      "ecommerce": 0.0,
+      "travel": 0.0
+    },
+    "category_balance": 0.0,
+    "tool_coverage": 0.0,
+    "repeated_first_names": {}
+  }
+}

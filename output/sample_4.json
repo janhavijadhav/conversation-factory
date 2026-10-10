@@ -1,0 +1,60 @@
+{
+  "id": "conv_0160f65c",
+  "category": "calendar",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Hi, I need to cancel my dentist appointment on Jan 15, 2027 because I\u2019ll be traveling for work.",
+      "tool_calls": []
+    },
+    {
+      "role": "assistant",
+      "tool_calls": [
+        {
+          "id": "fc_26ec94ec-6fee-4155-9bb9-d1007d5e5170",
+          "name": "search_events",
+          "arguments": {
+            "date": "2027-01-15",
+            "query": "dentist"
+          }
+        }
+      ]
+    },
+    {
+      "role": "tool",
+      "content": "{\"results\": [{\"event_id\": \"event_3c6da5\", \"title\": \"Dentist appointment\", \"start_time\": \"2027-01-15T09:45:00\"}, {\"event_id\": \"event_7a97c6\", \"title\": \"Project review\", \"start_time\": \"2027-01-15T08:00:00\"}, {\"event_id\": \"event_0512bd\", \"title\": \"Lunch with Sam\", \"start_time\": \"2027-01-15T15:00:00\"}]}",
+      "tool_calls": [],
+      "tool_call_id": "fc_26ec94ec-6fee-4155-9bb9-d1007d5e5170",
+      "name": "search_events"
+    },
+    {
+      "role": "assistant",
+      "tool_calls": [
+        {
+          "id": "fc_80eeefb6-78d9-4d1c-89b3-c2ece9917876",
+          "name": "delete_event",
+          "arguments": {
+            "event_id": "event_3c6da5"
+          }
+        }
+      ]
+    },
+    {
+      "role": "tool",
+      "content": "{\"event_id\": \"event_3c6da5\", \"deleted\": true}",
+      "tool_calls": [],
+      "tool_call_id": "fc_80eeefb6-78d9-4d1c-89b3-c2ece9917876",
+      "name": "delete_event"
+    },
+    {
+      "role": "assistant",
+      "content": "Your dentist appointment on\u202fJanuary\u202f15,\u202f2027\u202fat\u202f09:45\u202fhas been cancelled. Let me know if there\u2019s anything else you\u2019d like to adjust.",
+      "tool_calls": []
+    }
+  ],
+  "num_tool_calls": 2,
+  "num_grounding_fixes": 0,
+  "num_validation_errors": 0,
+  "stop_reason": "user_satisfied",
+  "scores": null
+}

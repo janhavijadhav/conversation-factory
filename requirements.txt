@@ -1,0 +1,7 @@
+openai>=1.40.0
+networkx>=3.2
+pydantic>=2.7
+langgraph>=0.2.0
+python-dotenv>=1.0.0
+tqdm>=4.66
+pytest>=8.0

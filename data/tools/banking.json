@@ -1,0 +1,86 @@
+[
+  {
+    "name": "list_accounts",
+    "category": "banking",
+    "description": "List the user's bank accounts",
+    "operation": "search",
+    "parameters": [],
+    "returns": [
+      {"name": "account_id", "type": "string"},
+      {"name": "account_type", "type": "string"},
+      {"name": "balance", "type": "number"}
+    ]
+  },
+  {
+    "name": "get_account_balance",
+    "category": "banking",
+    "description": "Get the current balance of an account",
+    "operation": "read",
+    "parameters": [
+      {"name": "account_id", "type": "string", "description": "ID of the account"}
+    ],
+    "returns": [
+      {"name": "account_id", "type": "string"},
+      {"name": "balance", "type": "number"}
+    ]
+  },
+  {
+    "name": "search_transactions",
+    "category": "banking",
+    "description": "Search transactions on an account",
+    "operation": "search",
+    "parameters": [
+      {"name": "account_id", "type": "string", "description": "ID of the account"},
+      {"name": "min_amount", "type": "number", "description": "Only show amounts above this", "required": false}
+    ],
+    "returns": [
+      {"name": "transaction_id", "type": "string"},
+      {"name": "amount", "type": "number"},
+      {"name": "merchant", "type": "string"}
+    ]
+  },
+  {
+    "name": "get_transaction",
+    "category": "banking",
+    "description": "Get details of one transaction",
+    "operation": "read",
+    "parameters": [
+      {"name": "transaction_id", "type": "string", "description": "ID of the transaction"}
+    ],
+    "returns": [
+      {"name": "transaction_id", "type": "string"},
+      {"name": "amount", "type": "number"},
+      {"name": "merchant", "type": "string"},
+      {"name": "status", "type": "string"}
+    ]
+  },
+  {
+    "name": "dispute_transaction",
+    "category": "banking",
+    "description": "Open a dispute on a transaction",
+    "operation": "create",
+    "parameters": [
+      {"name": "transaction_id", "type": "string", "description": "ID of the transaction"},
+      {"name": "reason", "type": "string", "description": "Why it is being disputed", "enum": ["fraud", "duplicate", "not_received", "wrong_amount"]}
+    ],
+    "returns": [
+      {"name": "dispute_id", "type": "string"},
+      {"name": "status", "type": "string"}
+    ]
+  },
+  {
+    "name": "transfer_funds",
+    "category": "banking",
+    "description": "Send money from one of the user's accounts to another account",
+    "operation": "create",
+    "parameters": [
+      {"name": "account_id", "type": "string", "description": "The user's account to send from"},
+      {"name": "to_account_number", "type": "string", "description": "Recipient's account number"},
+      {"name": "amount", "type": "number", "description": "Amount in USD"}
+    ],
+    "returns": [
+      {"name": "transfer_id", "type": "string"},
+      {"name": "status", "type": "string"}
+    ]
+  }
+]

@@ -1,0 +1,88 @@
+[
+  {
+    "name": "search_products",
+    "category": "ecommerce",
+    "description": "Search the store catalog",
+    "operation": "search",
+    "parameters": [
+      {"name": "query", "type": "string", "description": "What to search for"},
+      {"name": "max_price", "type": "number", "description": "Maximum price in USD", "required": false}
+    ],
+    "returns": [
+      {"name": "product_id", "type": "string"},
+      {"name": "product_name", "type": "string"},
+      {"name": "price", "type": "number"}
+    ]
+  },
+  {
+    "name": "get_product",
+    "category": "ecommerce",
+    "description": "Get details and stock for one product",
+    "operation": "read",
+    "parameters": [
+      {"name": "product_id", "type": "string", "description": "ID of the product"}
+    ],
+    "returns": [
+      {"name": "product_id", "type": "string"},
+      {"name": "product_name", "type": "string"},
+      {"name": "price", "type": "number"},
+      {"name": "stock", "type": "integer"}
+    ]
+  },
+  {
+    "name": "add_to_cart",
+    "category": "ecommerce",
+    "description": "Add a product to the shopping cart",
+    "operation": "create",
+    "parameters": [
+      {"name": "product_id", "type": "string", "description": "ID of the product"},
+      {"name": "quantity", "type": "integer", "description": "How many to add"}
+    ],
+    "returns": [
+      {"name": "cart_id", "type": "string"},
+      {"name": "item_count", "type": "integer"}
+    ]
+  },
+  {
+    "name": "place_order",
+    "category": "ecommerce",
+    "description": "Check out the cart and place an order",
+    "operation": "create",
+    "parameters": [
+      {"name": "cart_id", "type": "string", "description": "ID of the cart"},
+      {"name": "shipping_address", "type": "string", "description": "Full shipping address"}
+    ],
+    "returns": [
+      {"name": "order_id", "type": "string"},
+      {"name": "status", "type": "string"},
+      {"name": "total", "type": "number"}
+    ]
+  },
+  {
+    "name": "get_order_status",
+    "category": "ecommerce",
+    "description": "Check the status of an order",
+    "operation": "read",
+    "parameters": [
+      {"name": "order_id", "type": "string", "description": "ID of the order"}
+    ],
+    "returns": [
+      {"name": "order_id", "type": "string"},
+      {"name": "status", "type": "string"},
+      {"name": "estimated_delivery", "type": "string"}
+    ]
+  },
+  {
+    "name": "cancel_order",
+    "category": "ecommerce",
+    "description": "Cancel an order that has not shipped",
+    "operation": "delete",
+    "parameters": [
+      {"name": "order_id", "type": "string", "description": "ID of the order to cancel"}
+    ],
+    "returns": [
+      {"name": "order_id", "type": "string"},
+      {"name": "refund_amount", "type": "number"}
+    ]
+  }
+]

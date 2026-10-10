@@ -1,0 +1,105 @@
+{
+  "id": "conv_e096122d",
+  "category": "travel",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Hey, I need to find a hotel in Austin for my tech conference from Feb 12, 2027 to Feb 15, 2027, staying under $200 per night. Once I pick one, could you book it for me under my name Jordan Lee and add the reservation to my calendar?",
+      "tool_calls": []
+    },
+    {
+      "role": "assistant",
+      "tool_calls": [
+        {
+          "id": "fc_7cc4acce-49ec-454b-bec1-92e0100e9a66",
+          "name": "search_hotels",
+          "arguments": {
+            "check_in": "2027-02-12",
+            "check_out": "2027-02-15",
+            "city": "Austin",
+            "max_price": 200
+          }
+        }
+      ]
+    },
+    {
+      "role": "tool",
+      "content": "{\"results\": [{\"hotel_id\": \"hotel_3ceb3f\", \"hotel_name\": \"The Grand Plaza\", \"price_per_night\": 124.39}, {\"hotel_id\": \"hotel_9a9a80\", \"hotel_name\": \"Cityline Hotel\", \"price_per_night\": 155.09}, {\"hotel_id\": \"hotel_10c67f\", \"hotel_name\": \"Harbor View Inn\", \"price_per_night\": 189.06}]}",
+      "tool_calls": [],
+      "tool_call_id": "fc_7cc4acce-49ec-454b-bec1-92e0100e9a66",
+      "name": "search_hotels"
+    },
+    {
+      "role": "assistant",
+      "content": "Here are three Austin hotels that meet your dates (Feb\u202f12\u202f\u2013\u202fFeb\u202f15\u202f2027) and stay under\u202f$200 per night:\n\n| Hotel | Price per night |\n|-------|-----------------|\n| The Grand Plaza (hotel_3ceb3f) | **$124.39** |\n| Cityline Hotel (hotel_9a9a80) | **$155.09** |\n| Harbor View Inn (hotel_10c67f) | **$189.06** |\n\nPlease let me know which hotel you\u2019d like to book, and I\u2019ll reserve the room for **Jordan\u202fLee** and add the reservation to your calendar.",
+      "tool_calls": []
+    },
+    {
+      "role": "user",
+      "content": "Let's go with The Grand Plaza. Please book it for Jordan Lee and add the reservation to my calendar.",
+      "tool_calls": []
+    },
+    {
+      "role": "assistant",
+      "content": "I\u2019m ready to lock in your stay at **The Grand Plaza** for Jordan\u202fLee, but I need a couple of details before I can complete the booking:\n\n1. **Email address** to use for the reservation (the confirmation will be sent there).  \n2. **Preferred start time** for the calendar entry (e.g., \u201c2027\u201102\u201112\u202f15:00\u201d). If you\u2019d like, I can just use the check\u2011in date at a typical check\u2011in time.\n\nCould you provide those, and I\u2019ll handle the booking and add the reservation to your calendar right away?",
+      "tool_calls": []
+    },
+    {
+      "role": "user",
+      "content": "Sure thing! Use my email jordan.lee@example.com for the reservation, and set the calendar entry start time to 2027-02-12 15:00 (check\u2011in time).",
+      "tool_calls": []
+    },
+    {
+      "role": "assistant",
+      "tool_calls": [
+        {
+          "id": "fc_eb6332d2-8454-456b-b73b-94cea2dbb126",
+          "name": "book_hotel",
+          "arguments": {
+            "check_in": "2027-02-12",
+            "check_out": "2027-02-15",
+            "email": "jordan.lee@example.com",
+            "guest_name": "Jordan Lee",
+            "hotel_id": "hotel_3ceb3f"
+          }
+        }
+      ]
+    },
+    {
+      "role": "tool",
+      "content": "{\"reservation_id\": \"reservation_781f9c\", \"status\": \"confirmed\"}",
+      "tool_calls": [],
+      "tool_call_id": "fc_eb6332d2-8454-456b-b73b-94cea2dbb126",
+      "name": "book_hotel"
+    },
+    {
+      "role": "assistant",
+      "tool_calls": [
+        {
+          "id": "fc_38320bf4-b97c-4936-a3e9-85707d648f6f",
+          "name": "create_event",
+          "arguments": {
+            "duration_minutes": 4320,
+            "start_time": "2027-02-12T15:00:00",
+            "title": "Hotel stay at The Grand Plaza"
+          }
+        }
+      ]
+    },
+    {
+      "role": "tool",
+      "content": "{\"event_id\": \"event_426506\", \"title\": \"Hotel stay at The Grand Plaza\"}",
+      "tool_calls": [],
+      "tool_call_id": "fc_38320bf4-b97c-4936-a3e9-85707d648f6f",
+      "name": "create_event"
+    },
+    {
+      "role": "assistant",
+      "content": "Your hotel reservation is confirmed:\n\n- **Hotel:** The Grand Plaza (Austin)  \n- **Check\u2011in:** 2027\u201102\u201112  \n- **Check\u2011out:** 2027\u201102\u201115  \n- **Guest:** Jordan Lee  \n- **Reservation ID:** reservation_781f9c  \n\nI\u2019ve also added a calendar event titled **\u201cHotel stay at The Grand Plaza\u201d** starting at **2027\u201102\u201112\u202f15:00** and lasting the full three nights.\n\nLet me know if there\u2019s anything else you need\u2014flight searches, transportation, or anything else for your conference!",
+      "tool_calls": []
+    }
+  ],
+  "num_tool_calls": 3,
+  "num_grounding_fixes": 0,
+  "scores": null
+}

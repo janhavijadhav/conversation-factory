@@ -1,0 +1,16 @@
+# secrets
+.env
+
+# python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# generated data (large; metrics and calibration results are kept)
+output/*.jsonl
+output/*/train.jsonl
+output/*/rejected.jsonl
+
+# mac
+.DS_Store
